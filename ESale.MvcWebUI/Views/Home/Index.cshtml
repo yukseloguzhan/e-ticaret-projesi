@@ -1,0 +1,28 @@
+﻿@using ESale.MvcWebUI.Models
+@model IEnumerable<ProductModel>
+
+@{
+    ViewBag.Title = "Anasayfa";
+}
+
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4">HOŞGELDİNİZ, ÜRÜNLERİMİZE GÖZ ATIN!</h1>
+        <p class="lead">
+            Bilgisayar,Çamaşır Makinesi,Bulaşık Makinesi, Akıllı Telefon,Buzdolabı,Elektrik Süpürgesi, Televizyon,Oyun Konsolu, Video Kamera, Tablet ve daha fazlası...
+        </p>
+        <hr class="my-4">
+        <p>Hepsi ekonomik,bütçeye uygun fiyatlar. Haydi sepetini doldur</p>
+        <a class="btn btn-primary btn-lg" href="/Home/List" role="button">Ürünlere göz at</a>
+    </div>
+</div>
+
+
+<div class="container mb-5 mt-5" >
+
+
+       @Html.Partial("_ProductList",Model)
+
+</div>

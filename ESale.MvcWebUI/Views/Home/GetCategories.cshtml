@@ -1,0 +1,50 @@
+﻿
+@using ESale.Entities.Concrete
+@model IEnumerable<Category>
+
+
+@{
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
+
+
+<ul class="list-group">
+
+    @foreach (var x in Model)
+    {
+
+        if (selectedCategory != null)
+        {
+            int id = Int32.Parse(selectedCategory.ToString());
+
+            if (id == x.Id)
+            {
+                <li class="list-group-item active">
+                    <i class="fas fa-directions"></i>
+                    <a href="/Home/List/@x.Id" style="color:wheat">@x.Name</a>
+                </li>
+            }
+            else
+            {
+                <li class="list-group-item">
+                    <i class="fas fa-directions"></i>
+                    <a href="/Home/List/@x.Id">@x.Name</a>
+                </li>
+            }
+        }
+        else
+        {
+            <li class="list-group-item ">
+                <i class="fas fa-directions"></i>
+                <a href="/Home/List/@x.Id">@x.Name</a>
+            </li>
+        }
+
+
+
+    }
+
+    <li class="list-group-item "><a href="/Home/List">Tüm Kategoriler</a></li>
+
+
+</ul>

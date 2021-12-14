@@ -1,0 +1,148 @@
+﻿@using ESale.Entities.Concrete;
+@model Product
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div id="product-details" class="container pb-5">
+
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/UploadImages/@Model.Image" class="img-fluid rounded">
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>@Model.Name</h1>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+
+                    @if (Model.IsApproved == true)
+                    {
+                        <span class="badge badge-primary">Stokta</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger">Stockta yok</span>
+                    }
+
+
+
+                    <span class="product-number" style="float:right;margin-right:33px;color:chocolate"><i>@Model.Stock Adet mevcut</i></span>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <div id="description">
+                        @Model.Description
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+                    <span class="badge badge-success">55</span>
+                </div>
+                <div id="write-review" class="col-md-4">
+                    <a href="#">Write a review</a>
+                </div>
+
+
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <h4 id="product-price"><i class="fas fa-lira-sign"></i> @Model.Price</h4>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+
+
+                    @using (Html.BeginForm("AddToCart", "Carts"))
+                    {
+                        @Html.HiddenFor(x => x.Id)
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-cart-plus"></i>
+                            Sepete Ekle
+                        </button>
+                    }
+
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="bd-example bd-example-tabs">
+                <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-selected="true">Açıklama</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="pills-payment-tab" data-toggle="pill" href="#pills-payment" role="tab" aria-controls="pills-payment" aria-selected="false">Ödeme Şekli</a>
+                    </li>
+                    @*<li class="nav-item" role="presentation">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+                    </li>*@
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="pills-comment-tab" data-toggle="pill" href="#pills-comment" role="tab" aria-controls="pills-comment" aria-selected="false">Yorumlar</a>
+                    </li>
+                    @*<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </li>*@
+                </ul>
+
+
+
+                <div class="tab-content" id="pills-tabContent">
+
+
+
+                    <div class="tab-pane fade active show" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+                        <p>@Model.Description</p>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment-tab">
+                        <p>@Model.Price TL Kredi kartına 12 taksit yapıyoruz. Detaylı bilgi için mağazamıza gelip bizimle iletişime geçebilirsiniz</p>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="pills-comment" role="tabpanel" aria-labelledby="pills-comment-tab">
+                        <p>Henüz yorum yapılmadı</p>
+                    </div>
+
+                    <!--
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <p>nmnmnPlaceholder content for the tab panel. This one relates to the contact tab. Her love is like a drug. All my girls vintage Chanel baby. Got a motel and built a fort out of sheets. 'Cause she's the muse and the artist. (This is how we do) So you wanna play with magic. So just be sure before you give it all to me. I'm walking, I'm walking on air (tonight). Skip the talk, heard it all, time to walk the walk. Catch her if you can. Stinging like a bee I earned my stripes.</p>
+    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>  

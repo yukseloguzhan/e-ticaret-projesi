@@ -1,0 +1,30 @@
+﻿
+@using ESale.MvcWebUI.Models
+@model IEnumerable<ProductModel>
+
+<div class="row">
+
+    @foreach (var x in Model)
+    {
+
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <img src="~/UploadImages/@x.Image" class="card-img" width="253" height="255" alt="@x.Name">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="/Home/Details/@x.Id">
+                            @x.Name
+                        </a>
+                    </h5>
+                    <p class="card-text pt-2 description">@x.Description</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted product-price"><i class="fas fa-lira-sign"></i> @x.Price</small>
+                    <a href="/Home/Details/@x.Id" class="btn btn-primary btn-sm float-right"><i class="fas fa-angle-double-right"></i>Ürünü İncele</a>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
